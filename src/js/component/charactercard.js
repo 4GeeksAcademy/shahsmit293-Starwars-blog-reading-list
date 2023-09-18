@@ -4,6 +4,7 @@ import "../../styles/card.css";
 import propTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { useContext } from "react";
+
 export const CharacterCard = ({ ...props }) => {
   const navigate = useNavigate();
   const { store, actions } = useContext(Context);
@@ -18,14 +19,14 @@ export const CharacterCard = ({ ...props }) => {
         <p className="card-text">Species:{props.species}</p>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <button
-            onClick={() => navigate(`/readcharacter/${props.nav}`)}
+            onClick={() => navigate(`/readcharacter/${props.find}`)}
             className="btn btn-primary"
           >
             Learn More!
           </button>
           <button
-            className="btn btn-primary"
-            onClick={() => actions.loadFavoritesChar(props.addchar)}
+            className="btn btn-warning"
+            onClick={() => actions.loadFavoriteCharacter(props.addcharacterid)}
           >
             <i className="far fa-heart"></i>
           </button>
@@ -41,6 +42,6 @@ CharacterCard.propTypes = {
   available: propTypes.string,
   species: propTypes.string,
   img: propTypes.string,
-  nav: propTypes.number,
-  addchar: propTypes.number,
+  find: propTypes.number,
+  addcharacterid: propTypes.number,
 };

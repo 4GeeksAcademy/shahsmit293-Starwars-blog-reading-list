@@ -4,6 +4,7 @@ import "../../styles/card.css";
 import propTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
+
 export const LocationCard = ({ ...props }) => {
   const navigate = useNavigate();
   const { store, actions } = useContext(Context);
@@ -18,13 +19,13 @@ export const LocationCard = ({ ...props }) => {
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <button
             className="btn btn-primary"
-            onClick={() => navigate(`/readlocation/${props.nav}`)}
+            onClick={() => navigate(`/readlocation/${props.find}`)}
           >
             Learn More!
           </button>
           <button
-            className="btn btn-primary"
-            onClick={() => actions.loadFavoritesLocation(props.addloc)}
+            className="btn btn-warning"
+            onClick={() => actions.loadFavoritesLocation(props.addlocationid)}
           >
             <i className="far fa-heart"></i>
           </button>
@@ -40,6 +41,6 @@ LocationCard.propTypes = {
   dimension: propTypes.string,
   create: propTypes.string,
   img: propTypes.string,
-  nav: propTypes.number,
-  addloc: propTypes.number,
+  find: propTypes.number,
+  addlocationid: propTypes.number,
 };

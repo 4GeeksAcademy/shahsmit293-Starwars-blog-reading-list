@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { CharacterCard } from "../component/charactercard";
 import { Context } from "../store/appContext";
@@ -9,11 +8,11 @@ import { LocationCard } from "../component/locationcard";
 export const Home = () => {
   const { store, actions } = useContext(Context);
   return (
-    <div className="main">
+    <div className="details">
       <h1 style={{ color: "red", marginTop: "15px", marginBottom: "0px" }}>
-        Characters Lists
+        Characters
       </h1>
-      <div className="demo" style={{ display: "inline-flex" }}>
+      <div className="row d-flex flex-nowrap overflow-auto">
         {store.characters.map((element, index) => {
           return (
             <CharacterCard
@@ -23,16 +22,16 @@ export const Home = () => {
               available={element.status}
               species={element.species}
               img={element.image}
-              nav={element.id}
-              addchar={element.id}
+              find={element.id}
+              addcharacterid={element.id}
             />
           );
         })}
       </div>
       <h1 style={{ color: "red", marginTop: "15px", marginBottom: "0px" }}>
-        Locations Lists
+        Locations
       </h1>
-      <div className="demo2" style={{ display: "inline-flex" }}>
+      <div className="location-lists row d-flex flex-nowrap overflow-auto">
         {store.locations.map((element, index) => {
           return (
             <LocationCard
@@ -42,8 +41,8 @@ export const Home = () => {
               dimension={element.dimension}
               create={element.create}
               img={store.photos[index]}
-              nav={element.id}
-              addloc={element.id}
+              find={element.id}
+              addlocationid={element.id}
             />
           );
         })}
