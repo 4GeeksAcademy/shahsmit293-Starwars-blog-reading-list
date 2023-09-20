@@ -25,7 +25,12 @@ export const CharacterCard = ({ ...props }) => {
             Learn More!
           </button>
           <button
-            className="btn btn-warning"
+            style={{
+              backgroundColor: store.favoriteLists.includes(props.fullname)
+                ? "red"
+                : "yellow",
+            }}
+            className="btn"
             onClick={() => actions.loadFavoriteCharacter(props.addcharacterid)}
           >
             <i className="far fa-heart"></i>

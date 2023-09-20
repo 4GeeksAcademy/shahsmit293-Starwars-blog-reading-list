@@ -4,11 +4,13 @@ import { CharacterCard } from "../component/charactercard";
 import { Context } from "../store/appContext";
 
 import { LocationCard } from "../component/locationcard";
+import { SearchBar } from "../component/searchbar";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
   return (
     <div className="details">
+      <SearchBar />
       <h1 style={{ color: "red", marginTop: "15px", marginBottom: "0px" }}>
         Characters
       </h1>

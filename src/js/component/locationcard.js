@@ -24,7 +24,12 @@ export const LocationCard = ({ ...props }) => {
             Learn More!
           </button>
           <button
-            className="btn btn-warning"
+            className="btn"
+            style={{
+              backgroundColor: store.favoriteLists.includes(props.fullname)
+                ? "red"
+                : "yellow",
+            }}
             onClick={() => actions.loadFavoritesLocation(props.addlocationid)}
           >
             <i className="far fa-heart"></i>

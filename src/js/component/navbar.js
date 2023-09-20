@@ -2,25 +2,17 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
+
   return (
     <nav className="navbar navbar-light bg-white m-5 mt-0 justify-content-between">
       <Link to="/">
         <button className="navbar-brand mb-0 h1">star wars</button>
       </Link>
-      <form className="form" style={{ display: "flex" }}>
-        <input
-          className="form-control mr-sm-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Search
-        </button>
-      </form>
       <div className="dropdown">
         <button
           className="btn btn-primary dropdown-toggle"

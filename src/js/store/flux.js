@@ -1,32 +1,21 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      demo: [
-        {
-          title: "FIRST",
-          background: "white",
-          initial: "white",
-        },
-        {
-          title: "SECOND",
-          background: "white",
-          initial: "white",
-        },
-      ],
-
       characters: [], // Array of objects of characters
       locations: [], // Array of objects of locations
       readCharacter: {}, //Object for single charater for reading
       readLocation: {}, //Object for single location for reading
       photos: [], //All photos form characters
       favoriteLists: [], // Array of character and location name whihc favorited
+      onlyNames: undefined, //Array of names of charaters or locations
+      temp: undefined,
     },
 
     actions: {
-      // Use getActions to call a function within a fuction
+      /*Use getActions to call a function within a fuction
       exampleFunction: () => {
         getActions().changeColor(0, "green");
-      },
+      },*/
 
       // This function for load all character data from API
       loadCharacterData: () => {
@@ -39,6 +28,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             }
           })
           .then((data) => {
+            data.map((item) => {
+              item.category = "character";
+            });
             setStore({ characters: data });
           });
       },
@@ -54,7 +46,10 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .then((data) => {
             const favoriteLists = store.favoriteLists;
-            favoriteLists.push(data.name);
+            if (favoriteLists.includes(data.name) === false) {
+              favoriteLists.push(data.name);
+            }
+
             setStore({ favoriteLists: favoriteLists });
           });
       },
@@ -111,11 +106,14 @@ const getState = ({ getStore, getActions, setStore }) => {
             }
           })
           .then((data) => {
+            data.map((item) => {
+              item.category = "location";
+            });
             setStore({ locations: data });
           });
       },
 
-      //This function use to get single caracter from api
+      //This function use to get single character from api
       readCharacterData: (i) => {
         fetch(`https://rickandmortyapi.com/api/character/${i}`)
           .then((response) => {
@@ -141,19 +139,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
       },
 
-      changeColor: (index, color) => {
-        //get the store
+      searchNames: (input) => {
         const store = getStore();
 
-        //we have to loop the entire demo array to look for the respective index
-        //and change its color
-        const demo = store.demo.map((elm, i) => {
-          if (i === index) elm.background = color;
-          return elm;
+        var nameId = store.characters.filter((obj) => {
+          return obj.name === input;
         });
-
-        //reset the global store
-        setStore({ demo: demo });
+        setStore({ onlyNames: nameId });
       },
     },
   };
