@@ -11,7 +11,14 @@ export const Home = () => {
   return (
     <div className="details">
       <SearchBar />
-      <h1 style={{ color: "red", marginTop: "15px", marginBottom: "0px" }}>
+      <h1
+        style={{
+          color: "red",
+          marginTop: "15px",
+          marginBottom: "0px",
+          marginLeft: "10px",
+        }}
+      >
         Characters
       </h1>
       <div className="row d-flex flex-nowrap overflow-auto">
@@ -30,7 +37,14 @@ export const Home = () => {
           );
         })}
       </div>
-      <h1 style={{ color: "red", marginTop: "15px", marginBottom: "0px" }}>
+      <h1
+        style={{
+          color: "red",
+          marginTop: "15px",
+          marginBottom: "0px",
+          marginLeft: "10px",
+        }}
+      >
         Locations
       </h1>
       <div className="location-lists row d-flex flex-nowrap overflow-auto">

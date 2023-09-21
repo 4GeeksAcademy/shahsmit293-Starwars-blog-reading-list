@@ -8,15 +8,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       photos: [], //All photos form characters
       favoriteLists: [], // Array of character and location name whihc favorited
       onlyNames: undefined, //Array of names of charaters or locations
-      temp: undefined,
     },
 
     actions: {
-      /*Use getActions to call a function within a fuction
-      exampleFunction: () => {
-        getActions().changeColor(0, "green");
-      },*/
-
       // This function for load all character data from API
       loadCharacterData: () => {
         fetch(
@@ -139,13 +133,12 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
       },
 
-      searchNames: (input) => {
-        const store = getStore();
-
-        var nameId = store.characters.filter((obj) => {
+      //This function use to find names in searchbar
+      searchNames: (input, temp) => {
+        var result = temp.filter((obj) => {
           return obj.name === input;
         });
-        setStore({ onlyNames: nameId });
+        setStore({ onlyNames: result });
       },
     },
   };

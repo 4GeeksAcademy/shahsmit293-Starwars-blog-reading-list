@@ -9,9 +9,14 @@ export const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="navbar navbar-light bg-white m-5 mt-0 justify-content-between">
+    <nav className="navbar navbar-light bg-white m-5 mt-2 justify-content-between">
       <Link to="/">
-        <button className="navbar-brand mb-0 h1">star wars</button>
+        <button
+          className="navbar-brand mb-0 h1"
+          style={{ fontFamily: "cursive" }}
+        >
+          star wars
+        </button>
       </Link>
       <div className="dropdown">
         <button
